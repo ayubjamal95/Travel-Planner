@@ -3,7 +3,7 @@ The Travel Planner applications helps you get information about all the availabl
 The application is build on the top of v5.db.transport.rest which wraps Deutsche Bahn APIs.
 
 ## Production 
-The application is deployed on github-page, the production ready URL is https://ayubjamal95.github.io/Travel-Planner/journeys
+The application is deployed on github-page, the production ready URL is https://ayubjamal95.github.io/Travel-Planner/search
 
 ## Technical Specifications
 
