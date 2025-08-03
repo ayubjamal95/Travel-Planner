@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  dbServicesUrl : 'https://v5.db.transport.rest'
+  dbServicesUrl : 'https://v6.db.transport.rest'
 };
