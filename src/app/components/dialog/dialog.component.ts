@@ -26,4 +26,23 @@ export class DialogComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+  getDuration(departure: string, arrival: string): string {
+  const dep = new Date(departure).getTime();
+  const arr = new Date(arrival).getTime();
+  const minutes = Math.floor((arr - dep) / 60000);
+
+  if (minutes < 60) {
+    return `${minutes} min`;
+  } else {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    return m > 0 ? `${h}h ${m}m` : `${h}h`;
+  }
+}
+getValidLegs() {
+  return this.journey.legs.filter(
+    (    leg: { departure: string; arrival: string; }) => this.getDuration(leg.departure, leg.arrival) !== '0 min'
+  );
+}
+
 }

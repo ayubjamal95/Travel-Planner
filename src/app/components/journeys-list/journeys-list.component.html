@@ -1,36 +1,51 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="box-extended">
-        <mat-card-header>
-            <mat-card-title>Connections</mat-card-title>
-        </mat-card-header>
-        <mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
-            <mat-nav-list>
-                <div *ngFor="let journey of journeysObject.journeys">
-                    <mat-list-item (click)=openDialog(journey)>
-                        <div class="locations">
-                            <span matLine>{{journey.legs[0].origin.name}}</span>
-                            <span matLine class="vertical-dotted-line">
-                            </span>
-                            <span matLine>{{journey.legs[getLength(journey)].destination.name}}</span>
-                        </div>
-                        <div class="time">
-                            <span style="margin-right: 5px"> {{parseTime(journey.legs[0].departure)}}</span>
-                            <span><b>|</b></span>
-                            <span style="margin-left: 5px">
-                                {{parseTime(journey.legs[getLength(journey)].arrival)}}</span>
-                        </div>
-                        <div class="price">
-                            <div *ngIf="journey.price == null || journey.price == undefined">
-                                <span matLine> Price Not Available</span>
-                            </div>
-                            <div *ngIf="journey.price != null">
-                                <span matLine> {{journey.price.amount}}</span>
-                                <span style="margin-left:2%"> {{journey.price.currency}}</span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-                </div>
-            </mat-nav-list>
-        </mat-card-content>
-    </mat-card>
+  <mat-card class="box-extended">
+    <mat-card-header>
+      <mat-card-title>Routes</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="journeys-list">
+
+      <!-- Header Row -->
+      <div class="journey-header">
+        <div class="col-locations">Route</div>
+        <div class="col-departure">Departure</div>
+        <div class="col-arrival">Arrival</div>
+        <div class="col-price">Price</div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- Journey Rows -->
+      <mat-nav-list>
+        <mat-list-item *ngFor="let journey of journeysObject.journeys" (click)="openDialog(journey)" class="journey-item">
+          
+          <!-- Route -->
+          <div class="col-locations">
+            {{ journey.legs[0].origin.name }} → {{ journey.legs[getLength(journey)].destination.name }}
+          </div>
+
+          <!-- Departure -->
+          <div class="col-departure">
+            {{ parseTime(journey.legs[0].departure) }}
+          </div>
+
+          <!-- Arrival -->
+          <div class="col-arrival">
+            {{ parseTime(journey.legs[getLength(journey)].arrival) }}
+          </div>
+
+          <!-- Price -->
+          <div class="col-price">
+            <ng-container *ngIf="journey.price; else noPrice">
+              {{ journey.price.amount }} {{ journey.price.currency }}
+            </ng-container>
+            <ng-template #noPrice>
+              N/A
+            </ng-template>
+          </div>
+
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
 </div>
