@@ -11,7 +11,6 @@
   gap: 12px;
   padding: 12px 8px;
   width: 100%;
-  border-bottom: 1px solid #eee;
 }
 
 /* Column 1: Transport */
@@ -54,4 +53,55 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 15px;
+}
+
+.leg-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Must match the grid-template-columns of .leg-content-wrapper */
+  padding: 12px 8px;
+  border-bottom: 2px solid #ccc; /* A thicker line to separate the header */
+  font-weight: bold;
+  font-size: 14px;
+  color: #555;
+  background-color: #f5f5f5;
+
+  .header-col {
+    text-align: center;
+  }
+}
+/* Column 2: Route */
+.leg-route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .leg-route-details {
+    display: flex;
+    flex-direction: row; // Change to row
+    align-items: center;
+    gap: 8px; // Adjust gap for horizontal layout
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center; // Center text
+    
+    span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .small-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      color: gray;
+    }
+    
+    .arrow-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+      color: #3f51b5; // Use primary color for emphasis
+    }
+  }
 }

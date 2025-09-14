@@ -2,6 +2,12 @@
       <mat-card-title>Journey Detail</mat-card-title>
     </mat-card-header>
 
+  <div class="leg-header">
+    <div class="header-col">Transport Mode</div>
+    <div class="header-col">Route</div>
+    <div class="header-col">Timings</div>
+  </div>
+
 <mat-list>
   <mat-list-item *ngFor="let leg of journey.legs" class="leg-item">
     <div class="leg-content-wrapper">
@@ -14,7 +20,11 @@
       </div>
 
       <div class="leg-route">
-        {{ leg.origin.name }} → {{ leg.destination.name }}
+        <div class="leg-route-details">
+          <span><mat-icon class="small-icon">my_location</mat-icon> {{ leg.origin.name }}</span>
+          <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+          <span><mat-icon class="small-icon">location_on</mat-icon> {{ leg.destination.name }}</span>
+        </div>
       </div>
 
       <div class="leg-time">
